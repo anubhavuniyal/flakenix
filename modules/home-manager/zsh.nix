@@ -8,7 +8,7 @@
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /etc/nixos#default --impure";
+      update = "sudo nixos-rebuild switch --flake /home/equinox/flakenix#default --impure";
       bat = "cat";
       test = "sudo nixos-rebuild test";
     };
