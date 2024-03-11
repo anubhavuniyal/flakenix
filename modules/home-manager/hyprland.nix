@@ -11,6 +11,9 @@ let
       ${pkgs.swww}/bin/swww img ${./wallpaper.jpg} &
       mako
     '';
+    brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+    pactl = "${pkgs.pulseaudio}/bin/pactl";
+    playerctl = "${pkgs.playerctl}/bin/playerctl";
 in
 {
   home.sessionVariables = {
@@ -35,12 +38,39 @@ in
     settings = {
       monitor="eDP-1,2560x1440@165,0x0,1.5";
       exec-once = ''${startupScript}/bin/start'';
+      animations = {
+        enabled = "yes";
+        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        animation = [
+          "windows, 1, 5, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "fade, 1, 7, default"
+          "workspaces, 1, 6, default"
+        ];
+      };
       "$mod" = "SUPER";
       "$terminal" = "alacritty";
       "$menu" = "rofi -show run";
       bindm = [
 	"$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+      ];
+      bindle = [
+        ",XF86MonBrightnessUp,   exec, ${brightnessctl} set +5%"
+        ",XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-"
+        ",XF86KbdBrightnessUp,   exec, ${brightnessctl} -d asus::kbd_backlight set +1"
+        ",XF86KbdBrightnessDown, exec, ${brightnessctl} -d asus::kbd_backlight set  1-"
+        ",XF86AudioRaiseVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
+        ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+      ];
+      bindl =  [
+        ",XF86AudioPlay,    exec, ${playerctl} play-pause"
+        ",XF86AudioStop,    exec, ${playerctl} pause"
+        ",XF86AudioPause,   exec, ${playerctl} pause"
+        ",XF86AudioPrev,    exec, ${playerctl} previous"
+        ",XF86AudioNext,    exec, ${playerctl} next"
+        ",XF86AudioMicMute, exec, ${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
       ];
       bind = [
         "$mod, RETURN, exec, $terminal"

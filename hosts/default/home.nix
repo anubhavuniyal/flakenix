@@ -2,14 +2,17 @@
 
 {
   imports = [
-    ../../modules/home-manager/alacritty.nix
-    ../../modules/home-manager/tmux.nix
-    ../../modules/home-manager/zsh.nix
-    ../../modules/home-manager/nvim.nix
-    ../../modules/home-manager/hyprland.nix
-    ../../modules/home-manager/wayland.nix
-    ../../modules/home-manager/wlogout.nix
-    ../../modules/home-manager/rofi.nix
+    /home/equinox/flakenix/modules/home-manager/alacritty.nix
+    /home/equinox/flakenix/modules/home-manager/tmux.nix
+    /home/equinox/flakenix/modules/home-manager/zsh.nix
+    /home/equinox/flakenix/modules/home-manager/nvim.nix
+    /home/equinox/flakenix/modules/home-manager/hyprland.nix
+    /home/equinox/flakenix/modules/home-manager/wayland.nix
+    /home/equinox/flakenix/modules/home-manager/wlogout.nix
+    /home/equinox/flakenix/modules/home-manager/rofi.nix
+    /home/equinox/flakenix/modules/home-manager/git.nix
+    /home/equinox/flakenix/modules/home-manager/starship.nix
+    /home/equinox/flakenix/modules/home-manager/zellij.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -76,9 +79,6 @@
   #
   #  /etc/profiles/per-user/equinox/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

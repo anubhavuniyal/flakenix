@@ -142,8 +142,7 @@
         modules-left = [
           "custom/launcher"
           "temperature"
-          "mpd"
-          "custom/cava-internal"
+	  "hyprland/workspaces"
         ];
         modules-center = [
           "clock"
@@ -157,15 +156,23 @@
           "custom/powermenu"
           "tray"
         ];
+	"hyprland/workspaces"= {
+    format= "{icon}";
+    on-click= "activate";
+    all-outputs= true;
+    persistent_workspaces= {
+      "1"= "[]";
+      "2"= "[]";
+      "3"= "[]";
+    };
+    format-icons= {
+      "active"= "  ";
+      "default"= "  ";
+      "empty"= "  ";
+    };
+  };
         "custom/launcher" = {
           "format" = " ";
-          "on-click" = "pkill rofi || rofi2";
-          "on-click-middle" = "exec default_wall";
-          "on-click-right" = "exec wallpaper_random";
-          "tooltip" = false;
-        };
-        "custom/cava-internal" = {
-          "exec" = "sleep 1s && cava-internal";
           "tooltip" = false;
         };
         "pulseaudio" = {
@@ -194,20 +201,6 @@
         "cpu" = {
           "interval" = 1;
           "format" = "󰍛 {usage}%";
-        };
-        "mpd" = {
-          "max-length" = 25;
-          "format" = "<span foreground='#bb9af7'></span> {title}";
-          "format-paused" = " {title}";
-          "format-stopped" = "<span foreground='#bb9af7'></span>";
-          "format-disconnected" = "";
-          "on-click" = "mpc --quiet toggle";
-          "on-click-right" = "mpc update; mpc ls | mpc add";
-          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-          "on-scroll-up" = "mpc --quiet prev";
-          "on-scroll-down" = "mpc --quiet next";
-          "smooth-scrolling-threshold" = 5;
-          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
         };
         "network" = {
           "format-disconnected" = "󰯡 Disconnected";

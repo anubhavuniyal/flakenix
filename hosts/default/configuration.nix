@@ -171,13 +171,14 @@ in
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    git
     mako
     libnotify
     swww
     waybar
     wlr-randr
     networkmanagerapplet
+    brightnessctl
+    playerctl
   ];
   environment.sessionVariables = {
   	WLR_NO_HARDWARE_CURSORS = "1";
