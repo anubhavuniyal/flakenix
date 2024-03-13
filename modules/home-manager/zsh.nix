@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 let
-shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /home/equinox/flakenix#default --impure";
-      bat = "cat";
-      test = "sudo nixos-rebuild test";
-    };
+  shellAliases = {
+    update = "sudo nixos-rebuild switch --flake /home/equinox/flakenix#default --impure";
+    bat = "cat";
+    test = "sudo nixos-rebuild test";
+  };
 in
 {
   programs = {
-  thefuck.enable = true;
+    thefuck.enable = true;
 
     zsh = {
       inherit shellAliases;
@@ -23,12 +23,12 @@ in
         bindkey "^[[1;5D" backward-word
       '';
       zplug = {
-      enable = true;
-      plugins = [
-        { name = "fdellwing/zsh-bat"; tags = [ from:oh-my-zsh ]; } # Simple plugin installation
-        { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
-      ];
-    };
+        enable = true;
+        plugins = [
+          { name = "fdellwing/zsh-bat"; tags = [ "from:oh-my-zsh" ]; } # Simple plugin installation
+          { name = "plugins/git"; tags = [ "from:oh-my-zsh" ]; }
+        ];
+      };
     };
   };
 }

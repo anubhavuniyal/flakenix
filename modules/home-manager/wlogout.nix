@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   programs.wlogout = {
-  enable = true;
+    enable = true;
   };
 }
 

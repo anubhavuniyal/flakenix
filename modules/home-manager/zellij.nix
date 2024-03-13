@@ -1,16 +1,15 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  config,
-  ...
+{ inputs
+, pkgs
+, lib
+, config
+, ...
 }:
 {
-    xdg.configFile = {
-      "zellij/config.kdl".source = ./config.kdl;
-    };
+  xdg.configFile = {
+    "zellij/config.kdl".source = ./config.kdl;
+  };
 
-    programs.zellij = {
-      enable = true;
-    };
+  programs.zellij = {
+    enable = true;
+  };
 }

@@ -1,8 +1,9 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
   email = "anubhavuniyal0917@protonmail.com";
   name = "Anubhav Uniyal";
-in {
+in
+{
   programs.git = {
     enable = true;
     extraConfig = {
