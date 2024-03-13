@@ -23,6 +23,10 @@
 <h1>
 ❄️ NixOS dotfiles ❄️
 </h1>
+<h2>
+Current Setup
+</h2>
+<img href=https://github.com/anubhavuniyal/flakenix/blob/main/modules/home-manager/wallpaper.jpg?raw=true">
 </div>
 <h2 align="center">NixOS system configuration. Feel free to explore!</h2>
 
