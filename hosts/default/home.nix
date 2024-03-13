@@ -21,8 +21,6 @@
     packages = with pkgs; [
      firefox
       (pass.withExtensions (ext: with ext; [ pass-import ]))
-      passExtensions.pass-import
-      pass
       pinentry
       gnupg
       alacritty
