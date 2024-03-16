@@ -5,13 +5,16 @@ let
     bat = "cat";
     test = "sudo nixos-rebuild test";
   };
+  shellGlobalAliases = {
+    copy = "| wl-copy";
+  };
 in
 {
   programs = {
     thefuck.enable = true;
 
     zsh = {
-      inherit shellAliases;
+      inherit shellAliases shellGlobalAliases;
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;

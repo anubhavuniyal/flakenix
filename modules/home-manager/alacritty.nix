@@ -4,11 +4,17 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      enable = true;
       shell = {
         program = "${pkgs.zsh}/bin/zsh";
         args = [ "--interactive" ];
       };
+      keyboard.bindings = [
+        {
+          key = "V";
+          mods = "Control";
+          action = "Paste";
+        }
+      ];
       font = {
         normal = {
           family = "0xProto Nerd Font";

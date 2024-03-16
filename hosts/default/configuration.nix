@@ -1,12 +1,4 @@
 { config, pkgs, lib, inputs, ... }:
-let
-  unstable = import
-    (builtins.fetchTarball {
-      url = "https://github.com/nixos/nixpkgs/tarball/nixos-unstable";
-      sha256 = "0mhh8wyfcncg1sjkpdy72afhi964h5i70vampc60pslaqd1s06pa";
-    })
-    { inherit (config.nixpkgs) config; };
-in
 {
   imports =
     [
@@ -16,7 +8,7 @@ in
     ];
   fonts = {
     fontDir.enable = true;
-    packages = with pkgs; [ (unstable.nerdfonts.override { fonts = [ "0xProto" ]; }) ];
+    packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" ]; }) ];
   };
 
   programs = {
@@ -166,7 +158,6 @@ in
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "tty";
   };
   system.stateVersion = "23.11"; # Did you read the comment?
 }

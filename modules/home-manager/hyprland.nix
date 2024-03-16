@@ -9,11 +9,16 @@ let
     sleep 1
   
     ${pkgs.swww}/bin/swww img ${./wallpaper.jpg} &
-    mako
+    mako &
+    wl-paste --type text --watch cliphist store &
+    wl-paste --type image --watch cliphist store
   '';
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
+  slurp = "${pkgs.slurp}/bin/slurp";
+  grim = "${pkgs.grim}/bin/grim";
+  swappy = "${pkgs.swappy}/bin/swappy";
 in
 {
   home.sessionVariables = {
@@ -34,7 +39,6 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    enableNvidiaPatches = true;
     settings = {
       monitor = "eDP-1,2560x1440@165,0x0,1.5";
       exec-once = ''${startupScript}/bin/start'';
@@ -52,6 +56,7 @@ in
       "$mod" = "SUPER";
       "$terminal" = "alacritty";
       "$menu" = "rofi -show run";
+      "$clipboard" = "cliphist list | rofi -dmenu -p 'Select item to copy' -lines 10 -width 35 | cliphist decode | wl-copy && wtype -M ctrl v -m ctrl";
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
@@ -81,6 +86,9 @@ in
         "$mod, up, movefocus, k"
         "$mod, down, movefocus, j"
         "$mod, C, killactive,"
+        "$mod, V, exec, $clipboard"
+        "$mod, F, togglefloating,"
+        "$mod, P, exec, ${grim} -g \"$(${slurp})\" - | ${swappy} -f -"
       ]
       ++ (
         # workspaces
