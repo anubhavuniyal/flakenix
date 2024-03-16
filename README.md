@@ -26,7 +26,7 @@
 <h2>
 Current Setup
 </h2>
-<img src=https://github.com/anubhavuniyal/flakenix/blob/main/modules/home-manager/wallpaper.jpg?raw=true">
+<img src=https://github.com/anubhavuniyal/flakenix/blob/main/current_setup.png?raw=true">
 </div>
 <h2 align="center">NixOS system configuration. Feel free to explore!</h2>
 
