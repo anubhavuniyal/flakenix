@@ -3,12 +3,12 @@
   imports =
     [
       ./hardware-configuration.nix
-      /home/equinox/flakenix/hosts/default/nvidia.nix
+      ./nvidia.nix
       inputs.home-manager.nixosModules.default
     ];
   fonts = {
     fontDir.enable = true;
-    packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" ]; }) ];
+		packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" ]; }) ];
   };
 
   programs = {

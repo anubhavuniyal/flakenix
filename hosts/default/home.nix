@@ -2,18 +2,19 @@
 
 {
   imports = [
-    /home/equinox/flakenix/modules/home-manager/alacritty.nix
-    /home/equinox/flakenix/modules/home-manager/tmux.nix
-    /home/equinox/flakenix/modules/home-manager/zsh.nix
-    /home/equinox/flakenix/modules/home-manager/nvim.nix
-    /home/equinox/flakenix/modules/home-manager/hyprland.nix
-    /home/equinox/flakenix/modules/home-manager/wayland.nix
-    /home/equinox/flakenix/modules/home-manager/wlogout.nix
-    /home/equinox/flakenix/modules/home-manager/rofi.nix
-    /home/equinox/flakenix/modules/home-manager/git.nix
-    /home/equinox/flakenix/modules/home-manager/starship.nix
-    /home/equinox/flakenix/modules/home-manager/zellij.nix
-    /home/equinox/flakenix/modules/home-manager/btop.nix
+    ../../modules/home-manager/alacritty.nix
+    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/nvim.nix
+    ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/wayland.nix
+    ../../modules/home-manager/wlogout.nix
+    ../../modules/home-manager/rofi.nix
+    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/starship.nix
+    ../../modules/home-manager/zellij.nix
+    ../../modules/home-manager/btop.nix
+    ../../modules/home-manager/ctfs.nix
   ];
   home = {
     username = "equinox";

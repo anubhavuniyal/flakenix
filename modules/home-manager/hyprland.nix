@@ -40,7 +40,7 @@ in
     enable = true;
     systemd.enable = true;
     settings = {
-      monitor = "eDP-1,2560x1440@165,0x0,1.5";
+      monitor = "eDP-1,2560x1440@165,0x0,1.6";
       exec-once = ''${startupScript}/bin/start'';
       animations = {
         enabled = "yes";
