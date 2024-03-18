@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  xdg.configFile = {
+    "waybar/scripts".source = ./waybar-scripts;
+  };
   programs.waybar = {
     enable = true;
     systemd = {
@@ -135,14 +138,21 @@
                font-family: "0xProto Nerd Font" ;
                color: #33ccff;
              }
+			 #bluetooth{
+				 color: #ABE9B3;
+			 }
+			 #bluetooth.disabled{
+				color: rgb(255, 255, 255);
+			 }
     '';
     settings = [{
       "layer" = "top";
       "position" = "top";
       modules-left = [
         "custom/launcher"
-        "temperature"
-        "hyprland/workspaces"
+				"memory"
+        "cpu"
+			 "hyprland/workspaces"
       ];
       modules-center = [
         "clock"
@@ -150,9 +160,8 @@
       modules-right = [
         "pulseaudio"
         "backlight"
-        "memory"
-        "cpu"
         "network"
+				"bluetooth"
         "custom/powermenu"
         "tray"
       ];
@@ -185,6 +194,16 @@
         "on-click" = "pamixer -t";
         "tooltip" = false;
       };
+			"bluetooth" = {
+			  "format-off"= "󰂲";
+				"on-click" = "rofi-bluetooth &";
+				"format"= "";
+	"format-connected"= "";
+	"tooltip-format"= "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+	"tooltip-format-connected"= "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+	"tooltip-format-enumerate-connected"= "{device_alias}\t{device_address}";
+	"tooltip-format-enumerate-connected-battery"= "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+			};
       "clock" = {
         "interval" = 1;
         "format" = "{:%I:%M %p  %A %b %d}";
@@ -207,6 +226,7 @@
         "format-ethernet" = "󰒢 Connected!";
         "format-linked" = "󰖪 {essid} (No IP)";
         "format-wifi" = "󰖩 {essid}";
+				"on-click"= "~/.config/waybar/scripts/rofi-network-manager.sh";
         "interval" = 1;
         "tooltip" = false;
       };

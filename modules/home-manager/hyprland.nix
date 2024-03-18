@@ -4,8 +4,6 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
-    nm-applet --indicator &
-    blueman-applet & 
     sleep 1
   
     ${pkgs.swww}/bin/swww img ${./wallpaper.jpg} &

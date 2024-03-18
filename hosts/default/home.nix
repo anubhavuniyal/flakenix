@@ -33,6 +33,7 @@
       grim
       slurp
       swappy
+			rofi-bluetooth
     ];
   };
   programs.home-manager.enable = true;

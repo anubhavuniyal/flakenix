@@ -5,7 +5,7 @@
     package = pkgs.rofi-wayland;
     terminal = "${pkgs.alacritty}/bin/alacritty";
     extraConfig = {
-      modi = "run,drun,window";
+      modi = "run,drun,filebrowser";
       icon-theme = "Oranchelo";
       show-icons = true;
       drun-display-format = "{icon} {name}";
@@ -13,7 +13,7 @@
       hide-scrollbar = true;
       display-drun = "   Apps ";
       display-run = "   Run ";
-      display-window = "   Window";
+      display-filebrowser = "   FileBrowser";
       display-Network = " 󰤨  Network";
       sidebar-mode = true;
     };

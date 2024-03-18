@@ -3,7 +3,7 @@ let
   shellAliases = {
     update = "sudo nixos-rebuild switch --flake /home/equinox/flakenix#default --impure";
     bat = "cat";
-    test = "sudo nixos-rebuild test";
+    test = "sudo nixos-rebuild test --flake /home/equinox/flakenix#default --impure";
   };
   shellGlobalAliases = {
     copy = "| wl-copy";
