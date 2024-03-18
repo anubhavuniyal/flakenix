@@ -77,7 +77,7 @@
                padding-right: 6px;
                color: #7ebae4;
              }
-       #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
+       #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #bluetooth, #custom-powermenu, #custom-cava-internal {
                padding-left: 10px;
                padding-right: 10px;
              }
@@ -118,7 +118,7 @@
              }
        #custom-powermenu {
                color: rgb(242, 143, 173);
-               padding-right: 8px;
+               padding-right: 10px;
              }
        #tray {
                padding-right: 8px;
@@ -150,8 +150,6 @@
       "position" = "top";
       modules-left = [
         "custom/launcher"
-				"memory"
-        "cpu"
 			 "hyprland/workspaces"
       ];
       modules-center = [
@@ -160,6 +158,8 @@
       modules-right = [
         "pulseaudio"
         "backlight"
+        "cpu"
+				"memory"
         "network"
 				"bluetooth"
         "custom/powermenu"
@@ -222,13 +222,12 @@
         "format" = "󰍛 {usage}%";
       };
       "network" = {
-        "format-disconnected" = "󰯡 Disconnected";
-        "format-ethernet" = "󰒢 Connected!";
-        "format-linked" = "󰖪 {essid} (No IP)";
-        "format-wifi" = "󰖩 {essid}";
+        "format-disconnected" = "󰯡 ";
+        "format-ethernet" = "󰒢 ";
+        "format-linked" = "󰖪 {essid}";
+        "format-wifi" = "󰖩";
 				"on-click"= "~/.config/waybar/scripts/rofi-network-manager.sh";
         "interval" = 1;
-        "tooltip" = false;
       };
       "custom/powermenu" = {
         "format" = "";

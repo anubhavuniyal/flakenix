@@ -19,6 +19,11 @@ in
       enableCompletion = true;
       autosuggestion = { enable = true; };
       syntaxHighlighting.enable = true;
+			historySubstringSearch = { 
+			enable = true; 
+			searchDownKey = "$terminfo[kcud1]";
+			searchUpKey = "$terminfo[kcuu1]";
+			};
       initExtra = ''
         SHELL=${pkgs.zsh}/bin/zsh
         zstyle ':completion:*' menu select
@@ -28,7 +33,7 @@ in
       zplug = {
         enable = true;
         plugins = [
-          { name = "fdellwing/zsh-bat"; tags = [ "from:oh-my-zsh" ]; } # Simple plugin installation
+          { name = "fdellwing/zsh-bat"; tags = [ "from:oh-my-zsh" ]; }
           { name = "plugins/git"; tags = [ "from:oh-my-zsh" ]; }
         ];
       };

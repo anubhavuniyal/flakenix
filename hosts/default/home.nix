@@ -15,6 +15,7 @@
     ../../modules/home-manager/zellij.nix
     ../../modules/home-manager/btop.nix
     ../../modules/home-manager/ctfs.nix
+    ../../modules/home-manager/mako.nix
   ];
   home = {
     username = "equinox";
@@ -34,6 +35,7 @@
       slurp
       swappy
 			rofi-bluetooth
+			zsh-history-substring-search
     ];
   };
   programs.home-manager.enable = true;

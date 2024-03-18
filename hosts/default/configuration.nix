@@ -134,7 +134,6 @@
   nixpkgs.config.allowUnfree = true;
   environment = {
     systemPackages = with pkgs; [
-      mako
       libnotify
       swww
       waybar
