@@ -36,7 +36,11 @@
       swappy
 			rofi-bluetooth
 			zsh-history-substring-search
-    ];
+			obsidian
+    ];	
+		sessionVariables = {
+      seclists = "~/wordlists/share/wordlists/seclists";
+    };
   };
   programs.home-manager.enable = true;
 }

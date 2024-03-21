@@ -126,6 +126,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+		useGlobalPkgs = true;
     users = {
       "equinox" = import ./home.nix;
     };
@@ -152,11 +153,13 @@
           Hyprland
         '';
       };
+			hosts.mode = "0644";
     };
   };
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
+	networking.firewall.enable = false;
   system.stateVersion = "23.11"; # Did you read the comment?
 }

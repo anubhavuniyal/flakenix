@@ -1,6 +1,7 @@
 { inputs, pkgs,	...}: 
 {
-  home.packages = with pkgs; [
+  home = {
+	packages = with pkgs; [
 		nmap
 		dnsx
 		subfinder
@@ -20,5 +21,16 @@
 		john
 		seclists
 		sqlmap
+		gobuster
+		ffuf
+    python3
+    python311Packages.pip
+    rockyou
+    burpsuite
   ];
+	file = {
+		"wordlists".source = pkgs.seclists;
+    "rockyou".source = pkgs.rockyou;
+		};
+	};
 	}
