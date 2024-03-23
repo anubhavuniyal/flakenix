@@ -7,7 +7,7 @@
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/nvim.nix
     ../../modules/home-manager/hyprland.nix
-    ../../modules/home-manager/wayland.nix
+    ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/wlogout.nix
     ../../modules/home-manager/rofi.nix
     ../../modules/home-manager/git.nix
