@@ -37,7 +37,7 @@
 			rofi-bluetooth
 			zsh-history-substring-search
 			obsidian
-      cinnamon.nemo
+      dolphin
     ];	
 		sessionVariables = {
       seclists = "~/wordlists/share/wordlists/seclists";
