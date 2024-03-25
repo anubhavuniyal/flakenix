@@ -6,7 +6,7 @@ let
     ${pkgs.swww}/bin/swww init &
     sleep 1
   
-    ${pkgs.swww}/bin/swww img ${./wallpapers/luffy.png} &
+    ${pkgs.swww}/bin/swww img ${./wallpapers/minimalist-2.jpg} &
     mako &
     wl-paste --type text --watch cliphist store &
     wl-paste --type image --watch cliphist store

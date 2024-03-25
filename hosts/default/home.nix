@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/tmux.nix
@@ -23,7 +26,7 @@
     stateVersion = "23.11";
     packages = with pkgs; [
       firefox
-      (pass.withExtensions (ext: with ext; [ pass-import ]))
+      (pass.withExtensions (ext: with ext; [pass-import]))
       pinentry
       gnupg
       alacritty
@@ -34,12 +37,13 @@
       grim
       slurp
       swappy
-			rofi-bluetooth
-			zsh-history-substring-search
-			obsidian
+      rofi-bluetooth
+      zsh-history-substring-search
+      obsidian
       dolphin
-    ];	
-		sessionVariables = {
+      youtube-music
+    ];
+    sessionVariables = {
       seclists = "~/wordlists/share/wordlists/seclists";
     };
   };

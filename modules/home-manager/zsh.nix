@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 let
   shellAliases = {
-    update = "sudo nixos-rebuild switch --flake /home/equinox/flakenix#default --impure";
+    update = "sudo nixos-rebuild switch --flake ~/flakenix#default --impure";
     bat = "cat";
-    test = "sudo nixos-rebuild test --flake /home/equinox/flakenix#default --impure";
+    test = "sudo nixos-rebuild test --flake ~/flakenix#default --impure";
+    htb = "sudo openvpn ~/ctfs/htb/vpn/lab.ovpn 1>/dev/null &";
+    htbr = "sudo openvpn ~/ctfs/htb/vpn/release.ovpn 1>/dev/null &";
   };
   shellGlobalAliases = {
     copy = "| wl-copy";
