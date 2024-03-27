@@ -4,6 +4,7 @@
     [
       ./hardware-configuration.nix
       ./nvidia.nix
+      ./gaming.nix
       inputs.home-manager.nixosModules.default
     ];
   fonts = {
@@ -11,7 +12,11 @@
 		packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" ]; }) ];
   };
 
-  programs = {
+
+  programs = { 
+    virt-manager = {
+      enable = true;
+ };
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -58,6 +63,10 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    qemuGuest = {
+    enable = true;
+    };
+    spice-vdagentd.enable = true;
   };
 
   time.hardwareClockInLocalTime = true;
@@ -80,8 +89,6 @@
       enable = true;
     };
   };
-
-  # Enable zsh system-wide
 
   # Enable flakes support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -120,7 +127,7 @@
   users.users.equinox = {
     isNormalUser = true;
     description = "equinox";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     shell = pkgs.zsh;
   };
 
@@ -139,13 +146,13 @@
       swww
       waybar
       wlr-randr
-      networkmanagerapplet
       brightnessctl
-      playerctl
+      looking-glass-client
     ];
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
+      GSETTINGS_BACKEND = "keyfile";
     };
     etc = {
       "greetd/environments" = {

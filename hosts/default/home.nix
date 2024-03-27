@@ -21,6 +21,13 @@
     ../../modules/home-manager/mako.nix
   ];
   home = {
+    pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.catppuccin-cursors.mochaDark;
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    size = 20;
+  };
     username = "equinox";
     homeDirectory = "/home/equinox";
     stateVersion = "23.11";
@@ -48,4 +55,12 @@
     };
   };
   programs.home-manager.enable = true;
+dconf = {
+    settings = {
+  "org/virt-manager/virt-manager/connections" = {
+    autoconnect = ["qemu:///system"];
+    uris = ["qemu:///system"];
+  };
+  };
+    };
 }

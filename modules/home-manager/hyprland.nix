@@ -51,6 +51,45 @@ in
           "workspaces, 1, 6, default"
         ];
       };
+      general = {
+        gaps_in = 3;
+        gaps_out = 5;
+        border_size = 3;
+      };
+
+      decoration = {
+        rounding = 5;
+      };
+      input = {
+        follow_mouse = 1;
+        touchpad = {
+          natural_scroll = "yes";
+          disable_while_typing = true;
+          drag_lock = true;
+        };
+      };
+      misc = {
+        disable_splash_rendering = true;
+      };
+      decoration = {
+        drop_shadow = "yes";
+        shadow_range = 8;
+        shadow_render_power = 2;
+        "col.shadow" = "rgba(00000044)";
+
+        dim_inactive = false;
+
+        blur = {
+          enabled = true;
+          size = 8;
+          passes = 3;
+          new_optimizations = "on";
+          noise = 0.01;
+          contrast = 0.9;
+          brightness = 0.8;
+          popups = true;
+        };
+      };
       "$mod" = "SUPER";
       "$terminal" = "alacritty";
       "$menu" = "rofi -show run";
@@ -111,3 +150,4 @@ in
     };
   };
 }
+
