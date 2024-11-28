@@ -6,7 +6,7 @@ let
     ${pkgs.swww}/bin/swww init &
     sleep 1
   
-    ${pkgs.swww}/bin/swww img ${./wallpapers/minimalist-2.jpg} &
+    ${pkgs.swww}/bin/swww img ${./wallpapers/luffy.png} &
     mako &
     wl-paste --type text --watch cliphist store &
     wl-paste --type image --watch cliphist store
@@ -33,6 +33,7 @@ in
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
+    DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
   };
   wayland.windowManager.hyprland = {
     enable = true;
@@ -72,11 +73,6 @@ in
         disable_splash_rendering = true;
       };
       decoration = {
-        drop_shadow = "yes";
-        shadow_range = 8;
-        shadow_render_power = 2;
-        "col.shadow" = "rgba(00000044)";
-
         dim_inactive = false;
 
         blur = {
@@ -124,7 +120,8 @@ in
         "$mod, down, movefocus, j"
         "$mod, C, killactive,"
         "$mod, V, exec, $clipboard"
-        "$mod, F, togglefloating,"
+        "$mod, T, togglefloating,"
+        "$mod, F, fullscreen,"
         "$mod, P, exec, ${grim} -g \"$(${slurp})\" - | ${swappy} -f -"
       ]
       ++ (

@@ -25,6 +25,8 @@
 		ffuf
     python3
     python311Packages.pip
+    python311Packages.flask
+    python311Packages.kubernetes
     rockyou
     burpsuite
   ];

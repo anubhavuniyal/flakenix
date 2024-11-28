@@ -4,19 +4,54 @@
     [
       ./hardware-configuration.nix
       ./nvidia.nix
-      ./gaming.nix
+      #./gaming.nix
       inputs.home-manager.nixosModules.default
     ];
+
   fonts = {
     fontDir.enable = true;
 		packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" ]; }) ];
   };
 
+  virtualisation = {
+    docker = {
+      rootless = {
+        enable = true;
+      };
+      autoPrune = {
+        enable = true;
+      };
+      enable = true; 
+      enableOnBoot = true;
+    };
+    containerd = {
+      enable = true;
+      settings =
+      let
+        fullCNIPlugins = pkgs.buildEnv {
+          name = "full-cni";
+          paths = with pkgs;[
+            cni-plugins
+            cni-plugin-flannel
+          ];
+        };
+      in
+      {
+        plugins."io.containerd.grpc.v1.cri".cni = {
+          bin_dir = "${fullCNIPlugins}/bin";
+          conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d/";
+        };
+      };
+    };
+  };
 
   programs = { 
     virt-manager = {
-      enable = true;
+      enable = false;
  };
+    steam = {
+      enable = true;
+    };
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -111,8 +146,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable sound with pipewire.
-  sound.enable = true;
   security.rtkit.enable = true;
 
   hardware = {
@@ -162,6 +195,11 @@
       };
 			hosts.mode = "0644";
     };
+  };
+  systemd.services.containerd.serviceConfig = {
+    ExecStartPre = [
+      "-${pkgs.zfs}/bin/zfs create -o mountpoint=/var/lib/containerd/io.containerd.snapshotter.v1.zfs zroot/containerd"
+    ];
   };
   programs.gnupg.agent = {
     enable = true;

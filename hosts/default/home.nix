@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}: 
+{
   imports = [
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/tmux.nix
@@ -30,8 +31,9 @@
   };
     username = "equinox";
     homeDirectory = "/home/equinox";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     packages = with pkgs; [
+      vulkan-tools 
       firefox
       (pass.withExtensions (ext: with ext; [pass-import]))
       pinentry
@@ -49,18 +51,16 @@
       obsidian
       dolphin
       youtube-music
+      zed-editor
+      minikube
+      kubectl
+      kubernetes-helm
+      vscode
+      k9s
     ];
     sessionVariables = {
       seclists = "~/wordlists/share/wordlists/seclists";
     };
   };
   programs.home-manager.enable = true;
-dconf = {
-    settings = {
-  "org/virt-manager/virt-manager/connections" = {
-    autoconnect = ["qemu:///system"];
-    uris = ["qemu:///system"];
-  };
-  };
-    };
 }

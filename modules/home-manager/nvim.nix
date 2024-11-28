@@ -27,7 +27,7 @@
         };
       }
     ];
-    options = {
+    opts = {
       number = true;         # Show line numbers
       relativenumber = true; # Show relative line numbers
       expandtab = true;      # Tabs should be spaces
@@ -44,6 +44,8 @@
       };
       bufferline = {
         enable = true;
+        settings = {
+        options = {
         offsets = [
           {
             filetype = "neo-tree";
@@ -52,8 +54,13 @@
             text_align = "left";
           }
         ];
+        };
+        };
       };
       treesitter.enable = true;
+      web-devicons = {
+        enable = true;
+      };
     };
   };
 }

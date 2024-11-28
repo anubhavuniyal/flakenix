@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      shell = {
+      terminal.shell = {
         program = "${pkgs.zsh}/bin/zsh";
         args = [ "--interactive" ];
       };
