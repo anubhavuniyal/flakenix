@@ -2,6 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
+    catppuccin.url = "github:catppuccin/nix";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos.url = "nixpkgs/nixos-unstable";
     home-manager = {
@@ -10,8 +11,12 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
+         url = "github:hyprwm/hyprland-plugins";
+         inputs.hyprland.follows = "hyprland";
+    };
+    hyprpanel = {
+         url = "github:Jas-SinghFSU/HyprPanel";
+         inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -19,7 +24,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, catppuccin, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -29,8 +34,13 @@
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          catppuccin.nixosModules.catppuccin
           ./hosts/default/configuration.nix
           inputs.home-manager.nixosModules.default
+          { nixpkgs.overlays = [
+            inputs.hyprpanel.overlay
+                ];
+            }
         ];
       };
 

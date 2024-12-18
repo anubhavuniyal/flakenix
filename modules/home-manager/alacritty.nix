@@ -17,7 +17,7 @@
       ];
       font = {
         normal = {
-          family = "0xProto Nerd Font";
+          family = "JetBrainsMono Nerd Font";
           style = "Regular";
         };
         size = 20;

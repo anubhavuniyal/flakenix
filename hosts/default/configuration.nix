@@ -10,7 +10,7 @@
 
   fonts = {
     fontDir.enable = true;
-		packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" ]; }) ];
+		packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" "JetBrainsMono" ]; }) ];
   };
 
   virtualisation = {
@@ -46,6 +46,18 @@
   };
 
   programs = { 
+    firefox.enable = true;
+    hyprlock.enable = true;
+    thunar = {
+    enable = true;
+	  plugins = with pkgs.xfce; [
+		    exo
+		    mousepad
+		    thunar-archive-plugin
+		    thunar-volman
+		    tumbler
+  	  ];
+    };
     virt-manager = {
       enable = false;
  };
@@ -55,6 +67,7 @@
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+      xwayland.enable = true;
     };
     light = {
       enable = true;
@@ -107,6 +120,7 @@
   time.hardwareClockInLocalTime = true;
   boot = {
     kernelParams = [ "quiet" ];
+    kernelModules = [ "zfs" ];
     loader = {
       systemd-boot = {
         enable = true;
@@ -116,10 +130,13 @@
         canTouchEfiVariables = true;
       };
     };
+    supportedFilesystems = [ "zfs" ];
+    zfs.forceImportRoot = false;
   };
 
   networking = {
     hostName = "nixos"; # Define your hostname.
+    hostId = "ac6db370";
     networkmanager = {
       enable = true;
     };
@@ -181,6 +198,14 @@
       wlr-randr
       brightnessctl
       looking-glass-client
+      papirus-folders
+      papirus-icon-theme
+      gtk3
+      gtk4
+      fish
+      gtk-engine-murrine
+      hyprcursor
+      hypridle
     ];
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";

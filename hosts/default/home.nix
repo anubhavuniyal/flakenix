@@ -16,25 +16,38 @@
     ../../modules/home-manager/rofi.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/starship.nix
-    ../../modules/home-manager/zellij.nix
     ../../modules/home-manager/btop.nix
-    ../../modules/home-manager/ctfs.nix
     ../../modules/home-manager/mako.nix
   ];
-  home = {
-    pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.catppuccin-cursors.mochaDark;
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    size = 20;
+  gtk = {
+    iconTheme = {
+      name = "Papirus-Dark";
+      packages = pkgs.papirus-icon-theme;
+    };
+    theme.packages = pkgs.catppuccin-gtk.override {
+      accents = [ "mauve" ]; # You can specify multiple accents here to output multiple themes 
+      size = "standard";
+      variant = "mocha";
+    };
+    theme.name = "catppuccin-Dark";
+     gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 14;
+    };
+
   };
+  home = {
     username = "equinox";
     homeDirectory = "/home/equinox";
     stateVersion = "24.05";
     packages = with pkgs; [
       vulkan-tools 
-      firefox
       (pass.withExtensions (ext: with ext; [pass-import]))
       pinentry
       gnupg

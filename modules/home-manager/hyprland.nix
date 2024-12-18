@@ -2,7 +2,7 @@
 
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    ${pkgs.waybar}/bin/waybar &
+    ${pkgs.hyprpanel}/bin/hyprpanel &
     ${pkgs.swww}/bin/swww init &
     sleep 1
   
@@ -34,12 +34,17 @@ in
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
+    HYPRCURSOR_SIZE="30";
   };
   wayland.windowManager.hyprland = {
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    xwayland.enable = true;
     enable = true;
     systemd.enable = true;
+    plugins = [
+            inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.borders-plus-plus ];
     settings = {
-      monitor = "eDP-1,2560x1440@165,0x0,1.6";
+      monitor = "eDP-2,2560x1440@165,0x0,1.6";
       exec-once = ''${startupScript}/bin/start'';
       animations = {
         enabled = "yes";
