@@ -6,11 +6,16 @@
       ./nvidia.nix
       #./gaming.nix
       inputs.home-manager.nixosModules.default
+      ../../modules/home-manager/stylix.nix
     ];
 
   fonts = {
     fontDir.enable = true;
-		packages = with pkgs; [ (nerdfonts.override { fonts = [ "0xProto" "JetBrainsMono" ]; }) ];
+		packages = with pkgs; [ 
+            nerd-fonts.iosevka
+            nerd-fonts._0xproto
+            nerd-fonts.jetbrains-mono
+    ];
   };
 
   virtualisation = {
@@ -48,16 +53,6 @@
   programs = { 
     firefox.enable = true;
     hyprlock.enable = true;
-    thunar = {
-    enable = true;
-	  plugins = with pkgs.xfce; [
-		    exo
-		    mousepad
-		    thunar-archive-plugin
-		    thunar-volman
-		    tumbler
-  	  ];
-    };
     virt-manager = {
       enable = false;
  };
@@ -197,7 +192,6 @@
       waybar
       wlr-randr
       brightnessctl
-      looking-glass-client
       papirus-folders
       papirus-icon-theme
       gtk3
@@ -206,6 +200,8 @@
       gtk-engine-murrine
       hyprcursor
       hypridle
+      bibata-cursors
+      inputs.zen-browser.packages."${system}".default
     ];
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
@@ -231,5 +227,6 @@
     enableSSHSupport = true;
   };
 	networking.firewall.enable = false;
+  stylix.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?
 }

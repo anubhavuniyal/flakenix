@@ -1,0 +1,85 @@
+@import "mocha.css";
+
+* {
+  min-height: 0;
+  min-width: 0;
+  font-family: "Iosevka Nerd Font Mono";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+}
+
+tooltip {
+  background-color: @surface0;
+  border: 2px solid @mauve;
+}
+
+#workspaces {
+  margin-left: 0.5rem;
+}
+
+#workspaces button {
+  padding: 0.1rem 0.6rem;
+  margin: 0.4rem 0.25rem 0rem 0.25rem;
+  border-radius: 4px;
+  color: @lavender;
+  background-color: @surface0;
+}
+
+#workspaces button.active {
+  color: @sky;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+}
+
+#mpris,
+#tray,
+#cpu,
+#custom-gpu,
+#custom-gpu-temp,
+#memory,
+#pulseaudio,
+#custom-notification,
+#clock,
+#mpris,
+#tray {
+  padding: 0.1rem 0.6rem;
+  margin: 0.4rem 0.25rem 0rem 0.25rem;
+  border-radius: 4px;
+  background-color: @surface0;
+}
+
+#clock {
+  color: @rosewater;
+}
+
+#clock.simpleclock {
+  margin-right: 0.8rem;
+}
+
+#pulseaudio {
+  color: @teal;
+}
+
+#memory {
+  color: @yellow;
+}
+
+#custom-gpu,
+#custom-gpu-temp {
+  color: @green;
+}
+
+#cpu {
+  color: @blue;
+}
+
+#mpris {
+  color: @mauve;
+}

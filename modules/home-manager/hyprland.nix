@@ -3,11 +3,7 @@
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.hyprpanel}/bin/hyprpanel &
-    ${pkgs.swww}/bin/swww init &
     sleep 1
-  
-    ${pkgs.swww}/bin/swww img ${./wallpapers/luffy.png} &
-    mako &
     wl-paste --type text --watch cliphist store &
     wl-paste --type image --watch cliphist store
   '';
@@ -34,7 +30,6 @@ in
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
-    HYPRCURSOR_SIZE="30";
   };
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -45,7 +40,9 @@ in
             inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.borders-plus-plus ];
     settings = {
       monitor = "eDP-2,2560x1440@165,0x0,1.6";
-      exec-once = ''${startupScript}/bin/start'';
+      exec-once = [ 
+        "${startupScript}/bin/start"
+      ];
       animations = {
         enabled = "yes";
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";

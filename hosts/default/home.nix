@@ -11,37 +11,14 @@
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/nvim.nix
     ../../modules/home-manager/hyprland.nix
-    ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/wlogout.nix
     ../../modules/home-manager/rofi.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/btop.nix
-    ../../modules/home-manager/mako.nix
+    ../../modules/home-manager/hyprlock.nix
+    inputs.hyprpanel.homeManagerModules.hyprpanel
   ];
-  gtk = {
-    iconTheme = {
-      name = "Papirus-Dark";
-      packages = pkgs.papirus-icon-theme;
-    };
-    theme.packages = pkgs.catppuccin-gtk.override {
-      accents = [ "mauve" ]; # You can specify multiple accents here to output multiple themes 
-      size = "standard";
-      variant = "mocha";
-    };
-    theme.name = "catppuccin-Dark";
-     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 14;
-    };
-
-  };
   home = {
     username = "equinox";
     homeDirectory = "/home/equinox";
@@ -64,16 +41,24 @@
       obsidian
       dolphin
       youtube-music
+      base16-schemes
       zed-editor
-      minikube
-      kubectl
-      kubernetes-helm
-      vscode
-      k9s
+      hyprpanel
     ];
     sessionVariables = {
       seclists = "~/wordlists/share/wordlists/seclists";
     };
   };
+  stylix = {
+    targets = {
+      rofi = {
+        enable = false;
+      };
+    };
+  };
   programs.home-manager.enable = true;
+    xdg.configFile."hyprpanel/config.json" = {
+    source = ../../modules/home-manager/hyprpanel.json;  # Path relative to your configuration file
+    onChange = "${pkgs.procps}/bin/pkill -u $USER -USR1 hyprpanel || true";  # Reload HyprPanel when config changes
+  };
 }

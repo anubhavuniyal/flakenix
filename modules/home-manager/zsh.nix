@@ -6,12 +6,6 @@ let
     test = "sudo nixos-rebuild test --flake ~/flakenix#default --impure";
     htb = "sudo openvpn ~/ctfs/htb/vpn/lab.ovpn 1>/dev/null &";
     htbr = "sudo openvpn ~/ctfs/htb/vpn/release.ovpn 1>/dev/null &";
-    k = "kubectl "; 
-    kg = "kubectl get ";
-    ka = "kubectl apply ";
-    kd = "kubectl describe ";
-    kc = "kubectl create ";
-    setns = "kubectl config set-context --current --namespace=$1";
   };
   shellGlobalAliases = {
     copy = "| wl-copy";
