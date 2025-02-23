@@ -37,7 +37,7 @@ Current Setup
  ├─ Editor  -> Nixvim
  ├─ Browser -> Firefox
  ├─ Shell   -> ZSH
- ├─ Multiplexer -> Zellij
+ ├─ Multiplexer -> Tmux
  ├─ Prompt -> Starship
  ╰─ Resource Monitor -> Btop
  ╭─ Model -> Asus Zeyphrus G15 (2022)
@@ -47,7 +47,7 @@ Current Setup
  ╭─ WM       -> Hyprland
  ├─ Terminal -> Alacritty
  ├─ Theme    -> Catppuccin
- ├─ Font     -> 0xProto Nerd Font
+ ├─ Font     -> Iosevka Nerd Font
  ╰─ Hotel    -> Trivago
                         
 ```
