@@ -2,7 +2,7 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       ./nvidia.nix
       #./gaming.nix
       inputs.home-manager.nixosModules.default
@@ -11,7 +11,7 @@
 
   fonts = {
     fontDir.enable = true;
-		packages = with pkgs; [ 
+		packages = with pkgs; [
             nerd-fonts.iosevka
             nerd-fonts._0xproto
             nerd-fonts.jetbrains-mono
@@ -26,7 +26,7 @@
       autoPrune = {
         enable = true;
       };
-      enable = true; 
+      enable = true;
       enableOnBoot = true;
     };
     containerd = {
@@ -50,7 +50,7 @@
     };
   };
 
-  programs = { 
+  programs = {
     firefox.enable = true;
     hyprlock.enable = true;
     virt-manager = {
@@ -70,6 +70,14 @@
     zsh = {
       enable = true;
     };
+    uwsm.enable = true;
+    uwsm.waylandCompositors = {
+        hyprland = {
+        prettyName = "Hyprland";
+        comment = "Hyprland compositor manager by UWSM";
+        binPath = "/run/current-system/sw/bin/Hyprland";
+        };
+    };
   };
   # Enable XDG
   xdg.portal.enable = true;
@@ -79,7 +87,7 @@
       enable = true;
     };
     greetd = {
-      enable = true;
+      enable = false;
       settings = {
         default_session.command = ''
           ${pkgs.greetd.tuigreet}/bin/tuigreet \
@@ -88,6 +96,25 @@
             --user-menu \
             --cmd Hyprland
         '';
+      };
+    };
+    xserver.enable = true;
+    displayManager.defaultSession = "hyprland-uwsm";
+    displayManager.sddm = {
+        enable = true; # Enable SDDM.
+        package = pkgs.kdePackages.sddm;
+        extraPackages = with pkgs; [
+        kdePackages.qtsvg
+        kdePackages.qtmultimedia
+        kdePackages.qtvirtualkeyboard
+        sddm-astronaut
+        ];
+        wayland.enable = true;
+        theme = "sddm-astronaut-theme";
+        settings = {
+        Theme = {
+            CursorTheme = "Bibata-Modern-Ice";
+        };
       };
     };
     asusd = {
@@ -201,6 +228,7 @@
       hyprcursor
       hypridle
       bibata-cursors
+      sddm-astronaut
       inputs.zen-browser.packages."${system}".default
     ];
     sessionVariables = {
@@ -226,6 +254,7 @@
     enable = true;
     enableSSHSupport = true;
   };
+
 	networking.firewall.enable = false;
   stylix.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?

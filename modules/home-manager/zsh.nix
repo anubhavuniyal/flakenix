@@ -6,6 +6,7 @@ let
     test = "sudo nixos-rebuild test --flake ~/flakenix#default --impure";
     htb = "sudo openvpn ~/ctfs/htb/vpn/lab.ovpn 1>/dev/null &";
     htbr = "sudo openvpn ~/ctfs/htb/vpn/release.ovpn 1>/dev/null &";
+    zed = "zeditor";
   };
   shellGlobalAliases = {
     copy = "| wl-copy";
@@ -21,8 +22,8 @@ in
       enableCompletion = true;
       autosuggestion = { enable = true; };
       syntaxHighlighting.enable = true;
-			historySubstringSearch = { 
-			enable = true; 
+			historySubstringSearch = {
+			enable = true;
 			searchDownKey = "$terminfo[kcud1]";
 			searchUpKey = "$terminfo[kcuu1]";
 			};
@@ -42,4 +43,3 @@ in
     };
   };
 }
-

@@ -4,10 +4,10 @@
 , config
 , hostname
 , ...
-}: 
+}:
 let
   theme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
-  wallpaper = ./wallpapers/zoro.png;
+  wallpaper = ./wallpapers/minimalist-2.jpg;
   cursorSize = 24;
 in {
     stylix = {
@@ -51,8 +51,7 @@ in {
         };
 
         emoji = config.stylix.fonts.serif;
-        
+
       };
     };
 }
-
