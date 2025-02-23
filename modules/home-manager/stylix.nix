@@ -7,7 +7,7 @@
 }:
 let
   theme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
-  wallpaper = ./wallpapers/minimalist-2.jpg;
+  wallpaper = ./wallpapers/cloudsnight.jpg;
   cursorSize = 24;
 in {
     stylix = {
