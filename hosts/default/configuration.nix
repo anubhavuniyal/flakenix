@@ -51,6 +51,14 @@
   };
 
   programs = {
+    nh = {
+        enable = true;
+        flake = "/home/equinox/flakenix";
+        clean = {
+          enable = true;
+          extraArgs = "--keep-since 3d --keep 3";
+        };
+      };
     firefox.enable = true;
     hyprlock.enable = true;
     virt-manager = {
@@ -83,6 +91,14 @@
   xdg.portal.enable = true;
 
   services = {
+    btrfs.autoScrub = {
+        enable = true;
+        interval = "monthly";
+        fileSystems = ["/"];
+      };
+    pulseaudio = {
+          enable = false;
+        };
     blueman = {
       enable = true;
     };
@@ -137,10 +153,13 @@
     enable = true;
     };
     spice-vdagentd.enable = true;
+    upower.enable = true;
   };
 
   time.hardwareClockInLocalTime = true;
+
   boot = {
+    plymouth.enable = true;
     kernelParams = [ "quiet" ];
     kernelModules = [ "zfs" ];
     loader = {
@@ -192,9 +211,7 @@
       enable = true;
       powerOnBoot = false;
     };
-    pulseaudio = {
-      enable = false;
-    };
+
   };
   users.users.equinox = {
     isNormalUser = true;
@@ -230,6 +247,9 @@
       bibata-cursors
       sddm-astronaut
       inputs.zen-browser.packages."${system}".default
+      nix-output-monitor
+      nvd
+      gcc-unwrapped
     ];
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
@@ -254,6 +274,8 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  powerManagement.enable = true;
 
 	networking.firewall.enable = false;
   stylix.enable = true;

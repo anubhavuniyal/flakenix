@@ -1,4 +1,4 @@
-{ inputs, pkgs,	...}: 
+{ inputs, pkgs,	...}:
 {
   home = {
 	packages = with pkgs; [
@@ -18,7 +18,8 @@
 		hashcat-utils
 		netcat-gnu
 		crunch
-		john
+		# john
+		gcc_multi
 		seclists
 		sqlmap
 		gobuster

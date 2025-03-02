@@ -3,7 +3,7 @@
   pkgs,
   inputs,
   ...
-}: 
+}:
 {
   imports = [
     ../../modules/home-manager/alacritty.nix
@@ -17,6 +17,8 @@
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/btop.nix
     ../../modules/home-manager/hyprlock.nix
+    ../../modules/home-manager/kubernetes.nix
+    ../../modules/home-manager/ctfs.nix
     inputs.hyprpanel.homeManagerModules.hyprpanel
   ];
   home = {
@@ -24,7 +26,7 @@
     homeDirectory = "/home/equinox";
     stateVersion = "24.05";
     packages = with pkgs; [
-      vulkan-tools 
+      vulkan-tools
       (pass.withExtensions (ext: with ext; [pass-import]))
       pinentry
       gnupg
