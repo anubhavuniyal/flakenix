@@ -7,14 +7,13 @@
 }:
 let
   theme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
-  wallpaper = ./wallpapers/cloudsnight.jpg;
+  wallpaper = ./wallpapers/stall.jpg;
   cursorSize = 24;
 in {
     stylix = {
       image = wallpaper;
       autoEnable = true;
       polarity = "dark";
-
       base16Scheme = theme;
 
       opacity = {

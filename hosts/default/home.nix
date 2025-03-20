@@ -39,9 +39,10 @@
       slurp
       swappy
       rofi-bluetooth
+      rofi-emoji-wayland
       zsh-history-substring-search
       obsidian
-      dolphin
+      kdePackages.dolphin
       youtube-music
       base16-schemes
       zed-editor
@@ -56,6 +57,12 @@
       rofi = {
         enable = false;
       };
+    };
+    iconTheme = {
+      enable = true;
+      package = pkgs.beauty-line-icon-theme;
+      dark = "BeautyLine";
+      light = "BeautyLine";
     };
   };
   programs.home-manager.enable = true;
